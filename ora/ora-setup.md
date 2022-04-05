@@ -11,29 +11,64 @@ mklink javaw.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe"
 mklink javaws.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaws.exe"
 ```
 
-## AWS Corretto 11.0.14
+### AWS Corretto 11.0.14
 
-- https://corretto.aws/downloads/resources/11.0.14.10.1/amazon-corretto-11.0.14.10.1-windows-x86.msi
-- https://corretto.aws/downloads/resources/11.0.14.10.1/amazon-corretto-11.0.14.10.1-windows-x64.msi
-or
-- https://corretto.aws/downloads/resources/11.0.14.10.1/amazon-corretto-11.0.14.10.1-windows-x86-jdk.zip
-- https://corretto.aws/downloads/resources/11.0.14.10.1/amazon-corretto-11.0.14.10.1-windows-x64-jdk.zip
+- https://github.com/corretto/corretto-11/releases
 
 
-1. Remove all Java installations
-- uninstall Java 8 and Java 8 Update 144 (64-bit)
-3. Clean up any lingering register keys with regedit if some keys remain
-4. Clean up any lingering file/folder structures
+1. Remove all Java installations: uninstall Java 8.0_144 and Java 8 8.0_144 (64-bit)
 
+![java](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/VERSIONS-java-preinstall.png)
 
-Aws package: **`11.0.14.10.1\x64\amazon-corretto-11.0.14.10.1-windows-x64`**
+2. Clean up any lingering register keys with regedit **if some keys remain**:
 
+![HKLM 64](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/REG-java-preinstall.png)
 
+![HKLM 32](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/REG64-java-preinstall.png)
 
+3. Clean up `Path` variable if needed by removing javapath location:
+
+![Path](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/PATH-java-preinstall.png)
+
+4. Clean up any lingering file/folder structures:
+- `C:\Program Files\Java\`
+- `C:\Program Files (x86)\Java\`
+- `C:\ProgramData\Oracle\Java`
+
+### Install sources
+
+AWS-Corretto 11 Packages (both 32-bit and 64-bit): 
+- Release format .msi: **`amazon-corretto-11.0.14.10.1-windows-x64.zip`**
+- Signature MD5: **`amazon-corretto-11.0.14.10.1-windows-x64.md5`**
+- Release format .msi: **`amazon-corretto-11.0.14.10.1-windows-x86.zip`**
+- Signature MD5: **`amazon-corretto-11.0.14.10.1-windows-x86.md5`**
+
+Verify md5 checksums for each release to deploy:
+
+```shell=
+C:\sources\AwsCorretto\x86> certutil -hashfile amazon-corretto-11.0.14.10.1-windows-x86.zip MD5
+Hachage MD5 de amazon-corretto-11.0.14.10.1-windows-x86.zip :
+208210598ad37fa9328a3cd06fc47c0e
+CertUtil: -hashfile La commande s’est terminée correctement.
+
+C:\sources\AwsCorretto\x86> type amazon-corretto-11.0.14.10.1-windows-x86.md5
+208210598ad37fa9328a3cd06fc47c0e
+```
+
+If hashes match you can unzip the files and run both msi installers (x86/x64).
+
+![aws corretto](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/AWS-corretto-x86.png)
+
+Note that 32-bit version will be install to **`C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10`** while 64-bit version will be in **`C:\Program Files\Amazon Corretto\jdk11.0.14_10`**
+
+### Environment variables
+
+Ensure that  environment variables are correctly set:
+- JAVA_HOME
 ```shell=
 JAVA_HOME  C:\Program Files\Amazon Corretto\jdk11.0.14_10echo 
 ```
-
+- Path
 ```shell=
 C:\Users\a-yvidil>echo %Path%
 C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Gemalto\Access Client\v5\;C:\Program Files (x86)\Gemalto\Access Client\v5\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;
@@ -44,8 +79,6 @@ Remove `C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;` from the head of **
 ```
 C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Gemalto\Access Client\v5\;C:\Program Files (x86)\Gemalto\Access Client\v5\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;
 ```
-
-Note that 32-bit version will be install to **`C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10`**
 
 ## Full client install
 
