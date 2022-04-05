@@ -1,4 +1,4 @@
-# Oracle Client Side, Full procedure including Java Install
+# Oracle Client Side: full procedure x86/x64 including AWS-Corretto Java Install
 
 Windows have changed the way that Java is installed. Now it creates a **`C:\ProgramData\Oracle\Java\javapath`** folder that is added to the **PATH**. 
 This folder is a symlink to C:\ProgramData\Oracle\Java\javapath_target_115109593 which contains java.exe, javaw.exe, and javaws.exe (the main Java executables).
@@ -11,7 +11,7 @@ With Windows x64 the regedit keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft
 - https://github.com/corretto/corretto-11/releases
 
 
-1. Removing all Default Java installation: uninstall Java 8.0_144 and Java 8 8.0_144 (64-bit)
+1. Removing all Built-in Java installation: uninstall Java 8.0_144 and Java 8 8.0_144 (64-bit) using **Apps & features** menu 
 
 ![java](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/VERSIONS-java-preinstall.png)
 
