@@ -17,6 +17,9 @@ With Windows x64 the regedit keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft
 
 ![java](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/JAVA-uninstall.png)
 
+Usefull command in powershell to search for java:
+`Get-ChildItem -path c:\ -recurse 2>$null | where { $_.Name -match "^java.exe$" } -warningaction SilentlyContinue`
+
 2. Clean up any lingering register keys with regedit **if some keys remain**:
 
 ![HKLM 64](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/REG-java-preinstall.png)
@@ -142,6 +145,8 @@ Lien symbolique créé pour ora122 <<===>> C:\Oracle\product\ora12.2.0\client_x8
 
 Remove existing jdk folder and create a symlink to corretto-jdk for each version of client:
 
+Note that with powershell, in replacement for `rmdir /Q /S <folder>`, use command `Remove-Item -recurse -force <folder>`: **`Remove-Item -recurse -force jdk`** 
+
 ```
 C:\Oracle\product\ora12.2.0\client_x86> rmdir /Q /S jdk
 
@@ -165,7 +170,7 @@ Modify **Path** environment variable, replace all entries like **`C:\Oracle\prod
 **Path** should look like:
 
 ```shell=
-echo %Path%
+C:\> echo %Path%
 
 C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Gemalto\Access Client\v5\;C:\Program Files (x86)\Gemalto\Access Client\v5\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;C:\Windows\System32\ora122\bin;C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps
 ```
@@ -176,14 +181,12 @@ C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\Wind
 
 ### Registry Keys
 
-Fire up the Registry Editor:
+Fire up the Registry Editor (hit `Windows+r` then type `regedit`):
 
 - Set Registry value `HKLM\Software\ORACLE\KEY_OraClient12Home1\ORACLE_HOME` to `C:\Windows\System32\ora122`
-- Set Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient12Home1_32bit\ORACLE_HOME` to `C:\Windows\System32\ora122` (**and not C:\Windows\SysWOW64\ora122**)
-
+- Set Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient12Home1_32bit\ORACLE_HOME` to `C:\Windows\System32\ora122` too (**and not C:\Windows\SysWOW64\ora122**)
 
 *We can now use x86 and x64 Oracle Full Client seamless together, i.e. an x86 application will load the 32-bit libraries while an x64 application will deal with the 64-bit libraries.*
-
 
 ## Oracle SQLDeveloper 21.4
 
@@ -212,16 +215,16 @@ Declare **`JRE_HOME`** to point to **`C:\Program Files\Amazon Corretto\jdk11.0.1
 Verify checksum:
 
 ```shell=
-C:\sources\SqlDeveloper>certutil -hashfile sqldeveloper-21.4.2.018.1706-no-jre.zip MD5
+C:\sources\SqlDeveloper> certutil -hashfile sqldeveloper-21.4.2.018.1706-no-jre.zip MD5
 Hachage MD5 de sqldeveloper-21.4.2.018.1706-no-jre.zip :
 02baeabd99d8fb3529162cb1bee1db5f
 CertUtil: -hashfile La commande s’est terminée correctement.
 
-C:\sources\SqlDeveloper>type sqldeveloper-21.4.2.018.1706-no-jre.md5
+C:\sources\SqlDeveloper> type sqldeveloper-21.4.2.018.1706-no-jre.md5
 02baeabd99d8fb3529162cb1bee1db5f
 ```
 
-Unzip package and move **sqldeveloper** folder (from C:\sources\SqlDeveloper\sqldeveloper-21.4.2.018.1706-no-jre\sqldeveloper) to **`C:\Oracle\product`**.
+Unzip package and move **sqldeveloper** folder (from C:\sources\SqlDeveloper\sqldeveloper-21.4.2.018.1706-no-jre\sqldeveloper) to **`C:\Oracle\product\`**.
 
 At the end the **folders structure of `C:\Oracle`** should be like the following:
 
