@@ -11,9 +11,11 @@ With Windows x64 the regedit keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft
 - https://github.com/corretto/corretto-11/releases
 
 
-1. Remove all Java installations: uninstall Java 8.0_144 and Java 8 8.0_144 (64-bit)
+1. Removing all Default Java installation: uninstall Java 8.0_144 and Java 8 8.0_144 (64-bit)
 
 ![java](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/VERSIONS-java-preinstall.png)
+
+![java](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/JAVA-uninstall.png)
 
 2. Clean up any lingering register keys with regedit **if some keys remain**:
 
@@ -26,8 +28,8 @@ With Windows x64 the regedit keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft
 ![Path](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/PATH-java-preinstall.png)
 
 4. Clean up any lingering file/folder structures:
-- `C:\Program Files\Java\`
-- `C:\Program Files (x86)\Java\`
+- `C:\Program Files\Java`
+- `C:\Program Files (x86)\Java`
 - `C:\ProgramData\Oracle\Java`
 
 ### Install sources
@@ -54,11 +56,11 @@ If hashes match you can unzip the files and run both msi installers (x86/x64).
 
 ![aws corretto](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/AWS-corretto-x86.png)
 
-Note that 32-bit version will be install to **`C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10`** while 64-bit version will be in **`C:\Program Files\Amazon Corretto\jdk11.0.14_10`**
+Note that 32-bit version will be installed to **`C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10`** while 64-bit version will be in **`C:\Program Files\Amazon Corretto\jdk11.0.14_10`**
 
 ### Environment variables
 
-Ensure that  environment variables are correctly set:
+Ensure that environment variables are correctly set:
 - JAVA_HOME
 ```shell=
 JAVA_HOME  C:\Program Files\Amazon Corretto\jdk11.0.14_10 
@@ -77,7 +79,7 @@ C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\Wind
 
 ## Oracle Full Client 12.2
 
-Create **Oracle base** folder: `C:\> mkdir c:\Oracle`
+Create **Oracle base** folder: `C:\> mkdir C:\Oracle`
 
 **Client Releases**:
 
@@ -138,7 +140,7 @@ Lien symbolique créé pour ora122 <<===>> C:\Oracle\product\ora12.2.0\client_x8
 
 **Note**: Both symbolic links must have the same name, e.g. **`ora122`**
 
-Remove existing jdk and symlink corretto-jdk for each version of client:
+Remove existing jdk folder and create a symlink to corretto-jdk for each version of client:
 
 ```
 C:\Oracle\product\ora12.2.0\client_x86> rmdir /Q /S jdk
