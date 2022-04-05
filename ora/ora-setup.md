@@ -38,9 +38,9 @@ mklink javaws.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaws.exe"
 ### Install sources
 
 AWS-Corretto 11 Packages (both 32-bit and 64-bit): 
-- Release format .msi: **`amazon-corretto-11.0.14.10.1-windows-x64.zip`**
+- Release x64 format .msi: **`amazon-corretto-11.0.14.10.1-windows-x64.zip`**
 - Signature MD5: **`amazon-corretto-11.0.14.10.1-windows-x64.md5`**
-- Release format .msi: **`amazon-corretto-11.0.14.10.1-windows-x86.zip`**
+- Release x86 format .msi: **`amazon-corretto-11.0.14.10.1-windows-x86.zip`**
 - Signature MD5: **`amazon-corretto-11.0.14.10.1-windows-x86.md5`**
 
 Verify md5 checksums for each release to deploy:
@@ -66,7 +66,7 @@ Note that 32-bit version will be install to **`C:\Program Files (x86)\Amazon Cor
 Ensure that  environment variables are correctly set:
 - JAVA_HOME
 ```shell=
-JAVA_HOME  C:\Program Files\Amazon Corretto\jdk11.0.14_10echo 
+JAVA_HOME  C:\Program Files\Amazon Corretto\jdk11.0.14_10 
 ```
 - Path
 ```shell=
