@@ -202,7 +202,7 @@ Declare **`JRE_HOME`** to point to **`C:\Program Files\Amazon Corretto\jdk11.0.1
 **`JAVA_HOME` should already reside in the environment variables.**
 
 
-### Install SQL Developer:
+### Install SQLDeveloper:
 
 - Release no-jre for Windows 32-bit/64-bit: sqldeveloper-21.4.2.018.1706-no-jre.zip
 - Signature md5: sqldeveloper-21.4.2.018.1706-no-jre.md5
@@ -224,4 +224,8 @@ Unzip package and move **sqldeveloper** folder (from C:\sources\SqlDeveloper\sql
 At the end the **folders structure of `C:\Oracle`** should be like the following:
 
 ![oracle](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/ARCH-final-inked.png)
+
+And there should exist all those environement variables:
+
+![printenv](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/ENVVARS-final.png)
 
