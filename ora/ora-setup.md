@@ -1,15 +1,10 @@
 # Oracle Client Side, Full procedure including Java Install
 
-Windows have changed the way that Java is installed. Now it creates a **`C:\ProgramData\Oracle\Java\javapath`** folder that is added to the **PATH**, and this folder is a symlink to C:\ProgramData\Oracle\Java\javapath_target_115109593 which contains java.exe, javaw.exe, and javaws.exe (the main Java executables).
+Windows have changed the way that Java is installed. Now it creates a **`C:\ProgramData\Oracle\Java\javapath`** folder that is added to the **PATH**. 
+This folder is a symlink to C:\ProgramData\Oracle\Java\javapath_target_115109593 which contains java.exe, javaw.exe, and javaws.exe (the main Java executables).
 
 With Windows x64 the regedit keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft (32bit)`** and **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\JavaSoft (64bit)`**
 
-
-```
-mklink java.exe "C:\Program Files\Java\jdk1.8.0_102\bin\java.exe"
-mklink javaw.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe"
-mklink javaws.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaws.exe"
-```
 
 ## AWS Corretto 11.0.14
 
