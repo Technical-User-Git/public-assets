@@ -80,53 +80,86 @@ Remove `C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;` from the head of **
 C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Gemalto\Access Client\v5\;C:\Program Files (x86)\Gemalto\Access Client\v5\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;
 ```
 
-## Full client install
+### Oracle Full Client 12.2
 
-`C:\> mkdir c:\Oracle`
+Create **Oracle base** folder: `C:\> mkdir c:\Oracle`
 
-Download and install Oracle x86 Client, for example into **`C:\Oracle\product\ora12.2.0\client_x86`**
+**Client Releases**:
 
-Download and install Oracle x64 Client into different folder, for example to **`C:\Oracle\product\ora12.2.0\client_x64`**
+- Release x64: x64/OracleClient12201.zip
+- Signature md5: x64/OracleClient12201.md5
+- Release x86: x86/OracleClient-12201-x86.zip
+- Signature md5: x86/OracleClient-12201-x86.md5
 
-**Note:** Both client folder structure **should be the same** (e.g. presence of /bin directory)
+#### OUI (Oracle Universal Installer)
+
+1. Control checksum on files:
+
+```
+C:\sources\OracleClient12\x86> certutil -hashfile OracleClient-12201-x86.zip MD5
+Hachage MD5 de OracleClient-12201-x86.zip :
+2c396644d7b029967f74b95da5094493
+CertUtil: -hashfile La commande s’est terminée correctement.
+
+C:\sources\OracleClient12\x86> type OracleClient-12201-x86.md5
+2C396644D7B029967F74B95DA5094493
+```
+
+2. Unzip archive and install Oracle x86 Client (running setup.exe), for example into **`C:\Oracle\product\ora12.2.0\client_x86`**
+
+![oui step0](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/OUI-setup.png)
+
+3. Choose `Administrator` setup:
+
+![oui step1](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/OUI-stg01-admin.png)
+
+4. Specify Oracle base directory and Client deployment location:
+
+![oui step3](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/OUI-stg03.png)
+
+Repeat all previous steps (1-4) for Oracle x64 Client, choosing a different folder, for example to **`C:\Oracle\product\ora12.2.0\client_x64`**
+
+![oui x64](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/OUI-x64.png)
+
+**Note:** At the end of installation, both client folders structure **should be the same** (e.g. presence of /bin directory)
+
+### Symlinks
 
 Go to folder **`%WINDIR%\System32`** and create a symbolic link **`ora122`** to folder **`C:\Oracle\product\ora12.2.0\client_x64`**
 
 ```bash
-cd %WINDIR%\System32
-mklink /d ora122 C:\Oracle\product\ora12.2.0\client_x64
+C:\> cd %WINDIR%\System32
+C:\Windows\SysWOW64> mklink /d ora122 C:\Oracle\product\ora12.2.0\client_x64
 Lien symbolique créé pour ora122 <<===>> C:\Oracle\product\ora12.2.0\client_x64
 ```
 
-Switch to folder **`%WINDIR%\SysWOW64`** and create a symbolic link **`ora122`** to folder **`C:\Oracle\product\ora12.2.0\client_x86`**
+Switch to folder **`%WINDIR%\SysWOW64`** and create now a symbolic link **`ora122`** to folder **`C:\Oracle\product\ora12.2.0\client_x86`**
 
 ```bash
-cd %WINDIR%\SysWOW64
-mklink /d ora122 C:\Oracle\product\ora12.2.0\client_x86
+C:\> cd %WINDIR%\SysWOW64
+C:\Windows\SysWOW64> mklink /d ora122 C:\Oracle\product\ora12.2.0\client_x86
 Lien symbolique créé pour ora122 <<===>> C:\Oracle\product\ora12.2.0\client_x86
 ```
 
 **Note**: Both symbolic links must have the same name, e.g. **`ora122`**
 
-Remove existing jdk and symlink corretto jdk for each version of client:
+Remove existing jdk and symlink corretto-jdk for each version of client:
 
 ```
-C:\Oracle\product\ora12.2.0\client_x86>rmdir /Q /S jdk
+C:\Oracle\product\ora12.2.0\client_x86> rmdir /Q /S jdk
 
-C:\Oracle\product\ora12.2.0\client_x86>mklink /d jdk "C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10"
+C:\Oracle\product\ora12.2.0\client_x86> mklink /d jdk "C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10"
 Lien symbolique créé pour jdk <<===>> C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10
 ```
 
-
 ```
-C:\Oracle\product\ora12.2.0\client_x64>rmdir /Q /S jdk
+C:\Oracle\product\ora12.2.0\client_x64> rmdir /Q /S jdk
 
-C:\Oracle\product\ora12.2.0\client_x64>mklink /d jdk "C:\Program Files\Amazon Corretto\jdk11.0.14_10"
+C:\Oracle\product\ora12.2.0\client_x64> mklink /d jdk "C:\Program Files\Amazon Corretto\jdk11.0.14_10"
 Lien symbolique créé pour jdk <<===>> C:\Program Files\Amazon Corretto\jdk11.0.14_10
 ```
 
-## Environment variables
-
+### Environment variables
 
 Modify **Path** environment variable, replace all entries like **`C:\Oracle\product\ora12.2.0\client_x86`** and **`C:\Oracle\product\ora12.2.0\client_x64`** by **C:\Windows\System32\ora122\bin**. 
 
