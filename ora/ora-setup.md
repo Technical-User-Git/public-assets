@@ -11,7 +11,7 @@ mklink javaw.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaw.exe"
 mklink javaws.exe "C:\Program Files\Java\jdk1.8.0_102\bin\javaws.exe"
 ```
 
-### AWS Corretto 11.0.14
+## AWS Corretto 11.0.14
 
 - https://github.com/corretto/corretto-11/releases
 
@@ -80,7 +80,7 @@ Remove `C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;` from the head of **
 C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Gemalto\Access Client\v5\;C:\Program Files (x86)\Gemalto\Access Client\v5\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;
 ```
 
-### Oracle Full Client 12.2
+## Oracle Full Client 12.2
 
 Create **Oracle base** folder: `C:\> mkdir c:\Oracle`
 
@@ -91,7 +91,7 @@ Create **Oracle base** folder: `C:\> mkdir c:\Oracle`
 - Release x86: x86/OracleClient-12201-x86.zip
 - Signature md5: x86/OracleClient-12201-x86.md5
 
-#### OUI (Oracle Universal Installer)
+### OUI (Oracle Universal Installer)
 
 1. Control checksum on files:
 
@@ -177,7 +177,7 @@ C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\Wind
 - Set **`ORACLE_BASE`** to **`C:\Oracle`**.
 - Set **`TNS_ADMIN`** to **`\\ISS1-SV00052\MES_ISS\Oracle\Tns_Admin_Issoire`**
 
-## Registry Keys
+### Registry Keys
 
 Fire up the Registry Editor:
 
@@ -188,7 +188,7 @@ Fire up the Registry Editor:
 *We can now use x86 and x64 Oracle Full Client seamless together, i.e. an x86 application will load the 32-bit libraries while an x64 application will deal with the 64-bit libraries.*
 
 
-## SQLDeveloper
+## Oracle SQLDeveloper 21.4
 
 Create JRE packages:
 
