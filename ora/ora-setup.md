@@ -185,6 +185,8 @@ Fire up the Registry Editor:
 
 ## Oracle SQLDeveloper 21.4
 
+- https://www.oracle.com/tools/downloads/sqldev-downloads.html
+
 Create JRE packages:
 
 ```shell=
@@ -195,12 +197,31 @@ C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10\bin>jlink.exe --output ..\j
 C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin>jlink.exe --output ..\jre --add-modules java.se
 ```
 
-
-
 Declare **`JRE_HOME`** to point to **`C:\Program Files\Amazon Corretto\jdk11.0.14_10\jre\bin`**
 
-**`JAVA_HOME` should already reside in env:vars.**
+**`JAVA_HOME` should already reside in the environment variables.**
 
 
-Finally install SQL Developer ("no-jre" version for Windows 32-bit/64-bit):
-- https://www.oracle.com/tools/downloads/sqldev-downloads.html
+### Install SQL Developer:
+
+- Release no-jre for Windows 32-bit/64-bit: sqldeveloper-21.4.2.018.1706-no-jre.zip
+- Signature md5: sqldeveloper-21.4.2.018.1706-no-jre.md5
+
+Verify checksum:
+
+```shell=
+C:\sources\SqlDeveloper>certutil -hashfile sqldeveloper-21.4.2.018.1706-no-jre.zip MD5
+Hachage MD5 de sqldeveloper-21.4.2.018.1706-no-jre.zip :
+02baeabd99d8fb3529162cb1bee1db5f
+CertUtil: -hashfile La commande s’est terminée correctement.
+
+C:\sources\SqlDeveloper>type sqldeveloper-21.4.2.018.1706-no-jre.md5
+02baeabd99d8fb3529162cb1bee1db5f
+```
+
+Unzip package and move **sqldeveloper** folder (from C:\sources\SqlDeveloper\sqldeveloper-21.4.2.018.1706-no-jre\sqldeveloper) to **`C:\Oracle\product`**.
+
+At the end the **folders structure of `C:\Oracle`** should be like the following:
+
+![oracle](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/ARCH-final-inked.png)
+
