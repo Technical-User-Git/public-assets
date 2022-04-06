@@ -79,6 +79,7 @@ Remove `C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;` from the head of **
 ```
 C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Gemalto\Access Client\v5\;C:\Program Files (x86)\Gemalto\Access Client\v5\;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files (x86)\Sennheiser\SenncomSDK\;C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;
 ```
+**Note**: No need to keep `C:\Program Files (x86)\Amazon Corretto\jdk11.0.14_10` in the **Path**
 
 ## Oracle Full Client 12.2
 
