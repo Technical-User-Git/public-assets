@@ -235,3 +235,16 @@ And there should exist all those environement variables:
 
 ![printenv](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/ENVVARS-final.png)
 
+### Fix permission properties on ORACLE_HOME
+
+1. Open properties frame for `%ORACLE_HOME%`
+2. Security tab and click on **Avancé**
+3. Click on **Add**
+4. Select user account like `iss1-w41404\Utilisateurs`
+5. Validate by clicking on **OK**
+6. Checkbox ***Redefine permissions on all child objects and permit propagation of inherited permissions** (Remplacer toutes les entrées d'autorisation des objets enfants par des entrées d'autorisation pouvant hérités de cet object).
+7. **OK**
+
+
+![printenv](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_recursive.png)
+
