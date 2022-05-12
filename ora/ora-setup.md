@@ -130,7 +130,7 @@ Go to folder **`%WINDIR%\System32`** and create a symbolic link **`ora122`** to 
 
 ```bash
 C:\> cd %WINDIR%\System32
-C:\Windows\SysWOW64> mklink /d ora122 C:\Oracle\product\ora12.2.0\client_x64
+C:\Windows\System32> mklink /d ora122 C:\Oracle\product\ora12.2.0\client_x64
 Lien symbolique créé pour ora122 <<===>> C:\Oracle\product\ora12.2.0\client_x64
 ```
 
