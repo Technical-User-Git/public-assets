@@ -237,9 +237,11 @@ And there should exist all those environement variables:
 
 ### Fix permission properties on ORACLE_HOME
 
-**Full control** - Administrators, SYSTEM, Oracle Installation User, ORA_HOMENAME_SVCSIDS or the Oracle Home User
-**Read, execute, and list content** - Authenticated Users
+Set permissions as follow:
+**Full control** - Administrators, SYSTEM, ORA_<HOMENAME>_SVCSIDS, and the Oracle Home User (ex: **iss1-w41404\Utilisateurs**)
+**Read, execute, and list content** - **Authenticated Users**
 
+How to:
 1. Open properties frame for `%ORACLE_HOME%`
 2. Security tab and click on **Avancé**
 3. Click on **Add**
@@ -248,12 +250,11 @@ And there should exist all those environement variables:
 6. Checkbox ***Redefine permissions on all child objects and permit propagation of inherited permissions** (Remplacer toutes les entrées d'autorisation des objets enfants par des entrées d'autorisation pouvant hérités de cet object).
 7. **OK**
 
-
 ![perm01](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_recursive.png)
 
 ![perm02](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_auth_users.png)
 
-Note: The group `ORA_<HomeName>_SVCSIDS` (`ORA_OraClient12Home1_SVCSIDS`) is for Oracle's internal use and is automatically populated. It contains Service SIDs for all Windows services (e.g. Oracle Services for MTS, Listener, and Connection Manager) on client homes installed through custom installs. This group is granted full control to the specific client Oracle Home and client Oracle Base.
+Note: The group `ORA_<HomeName>_SVCSIDS` (ex: `ORA_OraClient12Home1_SVCSIDS`) is for Oracle's internal use and is automatically populated. It contains Service SIDs for all Windows services (e.g. Oracle Services for MTS, Listener, and Connection Manager) on client homes installed through custom installs. This group is granted full control to the specific client Oracle Home and client Oracle Base.
 
 ---
 ## References:
