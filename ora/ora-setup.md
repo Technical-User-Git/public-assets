@@ -249,6 +249,13 @@ And there should exist all those environement variables:
 7. **OK**
 
 
-![printenv](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_recursive.png)
+![perm01](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_recursive.png)
+
+![perm02](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_auth_users.png)
 
 Note: The group `ORA_<HomeName>_SVCSIDS` (`ORA_OraClient12Home1_SVCSIDS`) is for Oracle's internal use and is automatically populated. It contains Service SIDs for all Windows services (e.g. Oracle Services for MTS, Listener, and Connection Manager) on client homes installed through custom installs. This group is granted full control to the specific client Oracle Home and client Oracle Base.
+
+---
+## References:
+- https://it.inf.unideb.hu/oracle/ntqrf/about-setting-file-system-acls-manually.html#GUID-ABAD80E1-7B1F-4ED6-A5DF-8CE8A3E744EC
+
