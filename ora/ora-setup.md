@@ -254,7 +254,9 @@ How to:
 
 ![perm02](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_auth_users.png)
 
-Note: The group `ORA_<HomeName>_SVCSIDS` (ex: `ORA_OraClient12Home1_SVCSIDS`) is for Oracle's internal use and is automatically populated. It contains Service SIDs for all Windows services (e.g. Oracle Services for MTS, Listener, and Connection Manager) on client homes installed through custom installs. This group is granted full control to the specific client Oracle Home and client Oracle Base.
+Note: 
+- The group `ORA_<HomeName>_SVCSIDS` (ex: `ORA_OraClient12Home1_SVCSIDS`) is for Oracle's internal use and is automatically populated. It contains Service SIDs for all Windows services (e.g. Oracle Services for MTS, Listener, and Connection Manager) on client homes installed through custom installs. This group is granted full control to the specific client Oracle Home and client Oracle Base.
+- Key for Inventory path: `Ordinateur\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE`
 
 ---
 ## References:
