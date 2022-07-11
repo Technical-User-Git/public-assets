@@ -1,23 +1,23 @@
 # Oracle Full Client x86 v12
 
-Note: with Windows x64 10 the registry keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (64bit)`** and **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (32bit)`**
+**Note:** with Windows x64 10 the registry keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (64bit)`** and **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (32bit)`**
 
 
-**First remove all previous Oracle Client and Instantclient installations: uninstall via OUI (Oracle Universal Installer) or uninstaller and check that registry keys, environnement variables and folder are all removed!** 
+**First remove all previous Oracle Client and Instant-Client installations: uninstall via OUI (Oracle Universal Installer) or uninstaller and check that registry keys, environnement variables and folders are all cleaned and removed!** 
 
 
 ## Oracle Full Client 12.2
 
 Create **Oracle base** folder: `C:\> mkdir C:\Oracle`
 
-**Client Releases**:
+**Client Release file**:
 
 - Release x86: x86/OracleClient-12201-x86.zip
 - Signature md5: x86/OracleClient-12201-x86.md5
 
 ### OUI (Oracle Universal Installer)
 
-1. Control checksum on files:
+1. Control checksum on files (optionnal):
 
 ```
 C:\sources\OracleClient12\x86> certutil -hashfile OracleClient-12201-x86.zip MD5
