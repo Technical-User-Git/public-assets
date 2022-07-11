@@ -3,7 +3,7 @@
 **Note:** with Windows x64 10 the registry keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (64bit)`** and **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (32bit)`**
 
 
-**First remove all previous Oracle Client and Instant-Client installations: uninstall via OUI (Oracle Universal Installer) or uninstaller and check that registry keys, environnement variables and folders are all cleaned and removed!** 
+**First remove all previous Oracle Client and Instant-Client installations: uninstall via OUI (Oracle Universal Installer) or uninstaller and check that registry keys, environnement variables (ORACLE_BASE, ORACLE_HOME, Path) and folders are all cleaned and removed!** 
 
 
 ## Oracle Full Client 12.2
