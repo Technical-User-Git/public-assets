@@ -72,7 +72,7 @@ Check the Registry Editor (hit `Windows+r` then type `regedit`):
 ### Fix permission properties on ORACLE_BASE
 
 Set permissions as follow:
-**Full control** - Administrators, SYSTEM, ORA_<HOMENAME>_SVCSIDS, and the Oracle Home User (ex: **iss1-w41404\Utilisateurs**)
+**Full control** - Administrators, SYSTEM, ORA_<HOMENAME>_SVCSIDS, and the Oracle Base User (ex: **iss1-w41404\Utilisateurs**)
 **Read, execute, and list content** - **Authenticated Users**
 
 How to:
