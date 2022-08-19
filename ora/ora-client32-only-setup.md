@@ -69,14 +69,14 @@ Check the Registry Editor (hit `Windows+r` then type `regedit`):
 
 ![ODBC](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/clientx86_ODBC.png)
 
-### Fix permission properties on ORACLE_HOME
+### Fix permission properties on ORACLE_BASE
 
 Set permissions as follow:
 **Full control** - Administrators, SYSTEM, ORA_<HOMENAME>_SVCSIDS, and the Oracle Home User (ex: **iss1-w41404\Utilisateurs**)
 **Read, execute, and list content** - **Authenticated Users**
 
 How to:
-1. Open properties frame for `%ORACLE_HOME%`
+1. Open properties frame for `%ORACLE_BASE%`
 2. Security tab and click on **Avancé**
 3. Click on **Add**
 4. Select local users account like `ISS1-W41404\Utilisateurs`
