@@ -261,4 +261,5 @@ Note:
 ---
 ## References:
 - https://it.inf.unideb.hu/oracle/ntqrf/about-setting-file-system-acls-manually.html#GUID-ABAD80E1-7B1F-4ED6-A5DF-8CE8A3E744EC
-
+- https://docs.oracle.com/en/database/oracle/oracle-database/19/ntqrf/configuration-parameters-and-registry.html
+  
