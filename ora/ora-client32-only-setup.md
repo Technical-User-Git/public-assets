@@ -241,7 +241,7 @@ Set permissions on `C:\Oracle` as follow:
 
 ## Temp folder and source cleaning
  
-In a cmd terminal run the command: 
+In a cmd terminal run the commands: 
 
 **`cd C:\Temp`**
  
