@@ -1,5 +1,5 @@
 ---
-tags: oracle, clientX86
+tags: oracle, client x86
 ---
 
 # Oracle Full Client x86 v12
