@@ -57,7 +57,7 @@ The command ouputs the signature hash:
 2C396644D7B029967F74B95DA5094493
 ```
 
-THE hashes should be equal!
+The hashes should be equal!
 
 
 **[+] Step 3**: Unzip the source file
