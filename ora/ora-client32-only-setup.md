@@ -116,7 +116,7 @@ On the next screen, you will have to specify **Oracle base directory** and **Cli
 
 Just input **`C:\Oracle`** as Oracle base directory and **`C:\Oracle\product\ora12.2.0\client_x86`** for the client location and validate.
 
-The x86 will be installed.
+The Client x86 will be installed, be patient it will takes some minutes...
 
 **[+] Step 5**: Environment variables
 
@@ -239,6 +239,19 @@ Set permissions on `C:\Oracle` as follow:
 
 ![perm02](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_auth_users.png)
 
+## Temp folder and source cleaning
+ 
+In a cmd terminal run the command: 
+
+**`cd C:\Temp`**
+ 
+**`rmdir /S /Q .\client32`** to delete main directory and subfolders
+ 
+**`cd C:\mes_sources`**
+ 
+**`rmdir /S /Q .\OracleClient12`** to delete the source directory
+ 
+ 
 ---
 *Footnotes:* 
 - *The group **`ORA<HomeName>SVCSIDS`** (ex: `ORAOraClient12Home1SVCSIDS`) is for **Oracle's internal use** and is automatically populated. It contains **Service SIDs for all Windows services** (e.g. Oracle Services for MTS, Listener, and Connection Manager) on client homes installed through custom installs. **This group is granted full control to the specific client Oracle Home and client Oracle Base**.*
