@@ -1,33 +1,86 @@
 # Oracle Full Client x86 v12
 
-**Note:** with Windows x64 10 the registry keys are in **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (64bit)`** and **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (32bit)`**
+**Note:** with Windows 10 x64, the oracle registry keys are stored in:
+- **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (for 64bit)`** 
+- **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (for 32bit)`**
 
 
-**First remove all previous Oracle Client and Instant-Client installations: uninstall via OUI (Oracle Universal Installer) or uninstaller and check that registry keys, environnement variables (ORACLE_BASE, ORACLE_HOME, Path) and folders are all cleaned and removed!** 
+**To perform a clean install the deployment should be done on a fresh and running version of Windows 10 with no previous installation of Oracle Full Client or Instantclient.** 
 
 
 ## Oracle Full Client 12.2
 
-Create **Oracle base** folder: `C:\> mkdir C:\Oracle`
+**Step 1**: Create the **Oracle base** folder
+In a cmd terminal run the command `mkdir C:\Oracle`
 
-**Client Release file**:
+**Step 2**: Check the installer source file 
 
-- Release x86: x86/OracleClient-12201-x86.zip
-- Signature md5: x86/OracleClient-12201-x86.md5
+2.1 - You should have the following two files in your source or download directory:
 
-### OUI (Oracle Universal Installer)
+- Release x86 filename: **OracleClient-12201-x86.zip**
+- Signature md5 filename: **OracleClient-12201-x86.md5**
 
-1. Control checksum on files (optionnal):
+2.2 - Control checksum on files (optionnal):
+Verify the source file integrity by checking file signature. 
 
-```
-C:\sources\OracleClient12\x86> certutil -hashfile OracleClient-12201-x86.zip MD5
+In the terminal run the commands:
+`cd C:\mes_sources\OracleClient12\x86` to place yourself in the source file directory
+`certutil -hashfile OracleClient-12201-x86.zip MD5` to run MD5 checksum against the source file
+
+Last command will output:
+```shell
 Hachage MD5 de OracleClient-12201-x86.zip :
 2c396644d7b029967f74b95da5094493
 CertUtil: -hashfile La commande s’est terminée correctement.
-
-C:\sources\OracleClient12\x86> type OracleClient-12201-x86.md5
-2C396644D7B029967F74B95DA5094493
 ```
+
+You can now verify the returned MD5 hash matches the one in signature file.
+In the terminal run the command:
+`type OracleClient-12201-x86.md5` to display the content of signature file
+
+The command ouputs the signature hash:
+`2C396644D7B029967F74B95DA5094493`
+
+Both hashes should be equal!
+
+### OUI (Oracle Universal Installer)
+
+**Step 3**: Unzip the source file
+In the terminal run the command:
+`unzip -q OracleClient-12201-x86.zip -d c:\Temp` 
+
+It will unarchive the file to client32 in the Temp directory, then place yourself in `C:\Temp\client32`
+In the terminal run the commands:
+`cd C:\Temp\client32` to enter the client folder
+`dir /O:E` to list the content
+
+The last command will list 3 files and 5 folders:
+
+```shell
+ Le volume dans le lecteur C s’appelle WINDOWS
+ Le numéro de série du volume est F4B0-A0A0
+
+ Répertoire de c:\Temp\client32
+
+14/02/2017  13:55    <DIR>          ..
+14/02/2017  13:41    <DIR>          install
+14/02/2017  13:47    <DIR>          response
+14/02/2017  13:47    <DIR>          stage
+14/02/2017  13:55    <DIR>          .
+25/02/2013  21:01            67 432 setup.exe
+06/02/2013  21:25               514 welcome.html
+21/01/2015  15:14                78 setup.ini
+               3 fichier(s)           68 024 octets
+               5 Rép(s)  126 414 049 280 octets libres
+```
+
+From the terminal run the executable to launch OUI (Oracle Universal Installer)
+`setup.exe` 
+
+OUI will be started.
+
+
+
 
 2. Unzip archive and install Oracle x86 Client (running setup.exe), for example into **`C:\Oracle\product\ora12.2.0\client_x86`**
 
