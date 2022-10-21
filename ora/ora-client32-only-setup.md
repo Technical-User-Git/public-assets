@@ -9,7 +9,7 @@ tags: oracle, client x86
 - **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (for 32bit)`**
 
 
-***To perform a clean install the deployment should be done on a fresh and running version of Windows 10 with no previous installation of Oracle Full Client nor Instantclient.*** 
+:warning:<span style="color:red">***To perform a clean install the deployment should be done on a fresh and running version of Windows 10 with no previous installation of Oracle Full Client nor Instantclient.***</span>
 
 
 ## Full Client install
