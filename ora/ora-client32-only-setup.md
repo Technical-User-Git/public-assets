@@ -9,7 +9,8 @@ tags: oracle, client x86
 - **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (for 32bit)`**
 
 ```diff
-- To perform a clean install the deployment should be done on a fresh and running version of Windows 10 with no previous installation of Oracle Full Client nor Instantclient.***</span>
+- To perform a clean install the deployment should be done on a fresh and running version of Windows 10,
+- with no previous installation of Oracle Full Client nor Instantclient.
 ```
 
 ## Full Client install
@@ -22,20 +23,21 @@ In a cmd terminal run the command:
 
 **[+] Step 2**: Check the installer source file 
 
-**2.1** - You should have the following two files in your source or download directory:
+**2.1** - You should have the following two files in your source directory or just download it from here:
 
 - Release x86 filename: **OracleClient-12201-x86.zip**
 - Signature md5 filename: **OracleClient-12201-x86.md5**
 
-**2.2** - Control checksum on files (optionnal)
+**2.2** - Verify the source file integrity
 
-Verify the source file integrity by checking file signature. 
+Compute the hash value for the file **OracleClient-12201-x86.zip** (checksum process).
+It helps verify that the file has not changed since it was digitally signed (not corrupted in anyway).
 
-In the terminal run the commands:
+In your opened terminal run the commands:
 
 **`cd C:\mes_sources\OracleClient12\x86`** to place yourself in the source file directory
 
-**`certutil -hashfile OracleClient-12201-x86.zip MD5`** to run MD5 checksum against the source file
+**`certutil -hashfile OracleClient-12201-x86.zip MD5`** to run the checksum against the source file
 
 Last command will output:
 
