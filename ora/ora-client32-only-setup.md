@@ -5,8 +5,8 @@ tags: oracle, client x86
 # Oracle Full Client x86 v12
 
 ***Note:*** *with Windows 10 x64, the oracle registry keys are stored in:*
-- **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (for 64bit)`** 
-- **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (for 32bit)`**
+- **`HKEY_LOCAL_MACHINE\SOFTWARE\Oracle (for 64bit application data)`** 
+- **`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\ORACLE (for 32bit application data)`**
 
 ```diff
 - To perform a clean install the deployment should be done on a fresh and running version of Windows 10,
@@ -19,7 +19,7 @@ tags: oracle, client x86
 
 In a cmd terminal run the command: 
 
-**`mkdir C:\Oracle`**
+:arrow_forward: **`mkdir C:\Oracle`**
 
 **[+] Step 2**: Check the installer source file 
 
@@ -29,18 +29,19 @@ In a cmd terminal run the command:
 - Signature md5 filename: **OracleClient-12201-x86.md5**
 
 Alternatively you could download the files from the fileserver:
-_\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient12\x86_
+_`\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient12\x86`_
 
 **2.2** - Verify the source file integrity
 
 Compute the hash value for the file **OracleClient-12201-x86.zip** (checksum process).
-It helps verify that the file has not changed since it was digitally signed (not corrupted or altered in anyway).
+This "Best Pratice" helps verify that the file has not changed since it was digitally signed (not corrupted or altered in anyway).
 
 In your running terminal enter the commands:
 
-**`cd C:\mes_sources\OracleClient12\x86`** to place yourself in the source file directory
+:arrow_forward: **`cd C:\mes_sources\OraClient12\x86`** to place yourself in the source file directory 
+Change `mes_sources\OraClient12\x86` accordingly to the location of your source file.
 
-**`certutil -hashfile OracleClient-12201-x86.zip MD5`** to run the checksum against the source file
+:arrow_forward: **`certutil -hashfile OracleClient-12201-x86.zip MD5`** to run the checksum against the source file
 
 Last command will output:
 
@@ -54,7 +55,7 @@ You will now display the content of the original signature file.
 
 In the same terminal run the command:
 
-**`type OracleClient-12201-x86.md5`** 
+:arrow_forward: **`type OracleClient-12201-x86.md5`** 
 
 The command ouputs the signature hash:
 
@@ -62,22 +63,22 @@ The command ouputs the signature hash:
 2C396644D7B029967F74B95DA5094493
 ```
 
-You will now verify that the computed hash matches the previous one (signature file).
+You will now verify that the first computed hash matches the signature file one.
 
-2c396644d7b029967f74b95da5094493 = 2c396644d7b029967f74b95da5094493, the **hashes are equal**, file integrety is verified.
+`2c396644d7b029967f74b95da5094493 = 2c396644d7b029967f74b95da5094493`, the **hashes are equal**, file integrety is verified.
 
 
 **[+] Step 3**: Unzip the source file
 
 Always in your opened terminal session, run the commands:
 
-**`unzip -q OracleClient-12201-x86.zip -d c:\Temp`** 
+:arrow_forward: **`unzip -q OracleClient-12201-x86.zip -d c:\Temp`** 
 
-It will unarchive the file to **client32** folder inside the C:\Temp directory, then place yourself in **`C:\Temp\client32`**.
+It will unarchive the file to **client32** folder inside the **C:\Temp** directory, then place yourself in **`C:\Temp\client32`**.
 
-**`cd C:\Temp\client32`** to enter the client folder
+:arrow_forward: **`cd C:\Temp\client32`** to enter the client folder
 
-**`dir /O:E`** to list the content of client32 folder
+:arrow_forward: **`dir /O:E`** to list the content of client32 folder
 
 The last command will list 3 files and 5 directories:
 
@@ -103,7 +104,7 @@ The last command will list 3 files and 5 directories:
 
 In your terminal session, run the OUI setup executable:
 
-**`setup.exe`** 
+:arrow_forward: **`setup.exe`** 
 
 And OUI will be launched.
 
@@ -153,7 +154,7 @@ You will need to verify that all of the following variables are available in the
 
 Open a new cmd terminal and run the command:
 
-**`powershell $Env:Path -split ';'`**
+:arrow_forward: **`powershell $Env:Path -split ';'`**
 
 It ouputs the Path variable which should contains the oracle bin path:
 
@@ -175,7 +176,7 @@ C:\Oracle\product\ora12.2.0\client_x86\bin      <-- here is the declared bin dir
 
 Run the command:
 
-**`powershell gci env: | findstr /i /r ora.*`**
+:arrow_forward: **`powershell gci env: | findstr /i /r ora.*`**
 
 It displays all Oracle required variables that the system own:
 
@@ -190,7 +191,7 @@ TNS_ADMIN                      \\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire
 
 Run the command:
 
-**`tnsping V208R`**
+:arrow_forward: **`tnsping V208R`**
 
 The command output will validate that instance name resolution is working as expected!
 
@@ -248,13 +249,13 @@ Temp folder and source should be cleaning
  
 In a cmd terminal run the commands: 
 
-**`cd C:\Temp`**
+:arrow_forward: **`cd C:\Temp`**
  
-**`rmdir /S /Q .\client32`** to delete main directory and subfolders
+:arrow_forward: **`rmdir /S /Q .\client32`** to delete main directory and subfolders
  
-**`cd C:\mes_sources`**
+:arrow_forward: **`cd C:\mes_sources`**
  
-**`rmdir /S /Q .\OracleClient12`** to delete the source directory
+:arrow_forward: **`rmdir /S /Q .\OracleClient12`** to delete the source directory
  
  
 ---
