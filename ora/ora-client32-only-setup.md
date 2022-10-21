@@ -13,7 +13,7 @@ tags: oracle, client x86
 - with no previous installation of Oracle Full Client nor Instantclient.
 ```
 
-## Full Client install
+# I. Full Client install
 
 **[+] Step 1**: Create the **Oracle base** folder
 
@@ -23,17 +23,20 @@ In a cmd terminal run the command:
 
 **[+] Step 2**: Check the installer source file 
 
-**2.1** - You should have the following two files in your source directory or just download it from here:
+**2.1** - You should have the following two files in your source directory (if already downloaded)
 
 - Release x86 filename: **OracleClient-12201-x86.zip**
 - Signature md5 filename: **OracleClient-12201-x86.md5**
 
+Alternatively you could download the files from the fileserver:
+_\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient12\x86_
+
 **2.2** - Verify the source file integrity
 
 Compute the hash value for the file **OracleClient-12201-x86.zip** (checksum process).
-It helps verify that the file has not changed since it was digitally signed (not corrupted in anyway).
+It helps verify that the file has not changed since it was digitally signed (not corrupted or altered in anyway).
 
-In your opened terminal run the commands:
+In your running terminal enter the commands:
 
 **`cd C:\mes_sources\OracleClient12\x86`** to place yourself in the source file directory
 
@@ -43,15 +46,15 @@ Last command will output:
 
 ```shell=
 Hachage MD5 de OracleClient-12201-x86.zip :
-2c396644d7b029967f74b95da5094493
+2c396644d7b029967f74b95da5094493     <-- here is the signature (computed md5 hash)
 CertUtil: -hashfile La commande s’est terminée correctement.
 ```
 
-You can now verify that the returned MD5 hash matches the one stored in signature file.
+You will now display the content of the original signature file.
 
-In the terminal run the command:
+In the same terminal run the command:
 
-**`type OracleClient-12201-x86.md5`** to display the content of signature file
+**`type OracleClient-12201-x86.md5`** 
 
 The command ouputs the signature hash:
 
@@ -59,22 +62,22 @@ The command ouputs the signature hash:
 2C396644D7B029967F74B95DA5094493
 ```
 
-The hashes should be equal!
+You will now verify that the computed hash matches the previous one (signature file).
+
+2c396644d7b029967f74b95da5094493 = 2c396644d7b029967f74b95da5094493, the **hashes are equal**, file integrety is verified.
 
 
 **[+] Step 3**: Unzip the source file
 
-In the terminal run the command:
+Always in your opened terminal session, run the commands:
 
 **`unzip -q OracleClient-12201-x86.zip -d c:\Temp`** 
 
-It will unarchive the file to **client32** in the Temp directory, then place yourself in **`C:\Temp\client32`**.
-
-In the terminal run the commands:
+It will unarchive the file to **client32** folder inside the C:\Temp directory, then place yourself in **`C:\Temp\client32`**.
 
 **`cd C:\Temp\client32`** to enter the client folder
 
-**`dir /O:E`** to list the content
+**`dir /O:E`** to list the content of client32 folder
 
 The last command will list 3 files and 5 directories:
 
@@ -89,7 +92,7 @@ The last command will list 3 files and 5 directories:
 14/02/2017  13:47    <DIR>          response
 14/02/2017  13:47    <DIR>          stage
 14/02/2017  13:55    <DIR>          .
-25/02/2013  21:01            67 432 setup.exe
+25/02/2013  21:01            67 432 setup.exe      <-- here is the Oracle client installer
 06/02/2013  21:25               514 welcome.html
 21/01/2015  15:14                78 setup.ini
                3 fichier(s)           68 024 octets
@@ -98,11 +101,11 @@ The last command will list 3 files and 5 directories:
 
 **[+] Step 4**: Run **OUI (Oracle Universal Installer)**
 
-From the terminal run the executable to run OUI.
+In your terminal session, run the OUI setup executable:
 
 **`setup.exe`** 
 
-OUI will be launched.
+And OUI will be launched.
 
 ![oui step0](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/OUI-setup.png)
 
@@ -124,7 +127,7 @@ The Client x86 will be installed, be patient it will takes some minutes...
 
 Open the **System Properties** window, then click the **Environment Variables** button near the bottom of the tab.
 
-You will need to verify that all of the following variables are available in the system environment, if not just create them.
+You will need to verify that all of the following variables are available in the **system environment** not in user environment, if not just create them.
 
 **5.1** - ORACLE_BASE
 
@@ -136,9 +139,9 @@ You will need to verify that all of the following variables are available in the
 
 **5.3** - Path
 
-**`Path`** should contain the client **`\bin`** location (where are stored the Oracle dll and binaries).
+**`Path`** should contain the absolute path **`C:\Oracle\product\ora12.2.0\client_x86\bin`** (the **bin** directory is where are stored the Oracle dll and binaries).
 
-The absolute path **`C:\Oracle\product\ora12.2.0\client_x86\bin`** have to be included at the end of the system environment Path variable.
+**`C:\Oracle\product\ora12.2.0\client_x86\bin`** have to be included at the end of the entries (as shown in Sanity check section).
 
 **5.4** - TNS_ADMIN
 
@@ -167,7 +170,7 @@ C:\Program Files\SafeNet\Authentication\SAC\x32;
 C:\Program Files (x86)\Sennheiser\SenncomSDK\;
 C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;
 C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;
-C:\Oracle\product\ora12.2.0\client_x86\bin      <-- here the bin directory!
+C:\Oracle\product\ora12.2.0\client_x86\bin      <-- here is the declared bin directory!
 ```
 
 Run the command:
@@ -212,15 +215,13 @@ Check the Registry Editor (hit `Windows+r` then type `regedit`):
 
 - Check that Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient12Home1_32bit\ORACLE_HOME` points to `C:\Oracle\product\ora12.2.0\client_x86`
 
-- **`HKLM\SOFTWARE\WOW6432Node\ORACLE\`** should look like:
-
 ![OLEDB](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/clientx86_OLEDB.png)
 
-- **`HKLM\SOFTWARE\WOW6432Node\ODBC\`** should look like:
+- **`HKLM\SOFTWARE\WOW6432Node\ODBC\ODBCINST.INI\Oracle dans OraClient12Home1_32bit`** has a path reference to the main driver file `C:\Oracle\product\ora12.2.0\client_x86\BIN\SQORA32.DLL`:
 
 ![ODBC](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/clientx86_ODBC.png)
 
-## Fix permission properties on ORACLE_BASE
+## II. Fix permission properties on ORACLE_BASE
 
 Set permissions on `C:\Oracle` as follow:
 
@@ -229,10 +230,10 @@ Set permissions on `C:\Oracle` as follow:
 
 **How to:**
     
-1. Open properties frame for `%ORACLE_BASE%` (right click on C:\Oracle and choose properties on contextual menu)
-2. Security tab and click on **Avancé**
+1. Right click on C:\Oracle (`%ORACLE_BASE%`) and choose properties on contextual menu.
+2. Select the Security tab and click on **Avancé**
 3. Click on **Add**
-4. Select local users account like `ISS1-W41404\Utilisateurs` or `ISS1-W41404\Utilisateurs authentifiés`
+4. Select a local user account (HOSTNAME\Utilisateurs) like `ISS1-W41404\Utilisateurs` or `ISS1-W41404\Utilisateurs authentifiés` (change hostname ISS1-W41404 accordingly to your system) 
 5. Validate by clicking on **OK**
 6. Checkbox ***Redefine permissions on all child objects and permit propagation of inherited permissions** (Remplacer toutes les entrées d'autorisation des objets enfants par des entrées d'autorisation pouvant hérités de cet object).
 7. Click on **OK**
@@ -241,7 +242,9 @@ Set permissions on `C:\Oracle` as follow:
 
 ![perm02](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/folder_property_perms_auth_users.png)
 
-## Temp folder and source cleaning
+## III. Cleanup
+ 
+Temp folder and source should be cleaning
  
 In a cmd terminal run the commands: 
 
