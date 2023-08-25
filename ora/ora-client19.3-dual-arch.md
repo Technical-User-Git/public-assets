@@ -44,16 +44,22 @@ foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cac
 
 **OR**
 
-**2.1** - You could have the following two files in your source directory (if already downloaded)
+**2.1** - Download the source from the fileserever
+
+You will need to download the following files:
 
 - Release x86 filename: **Client32.zip**
 - Signature md5 filename: **Client32.md5**
 
-Or alternatively you could download the files from the fileserver:
+Download uri:
 
-_`\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3\x86`_
+**ISSOIRE repository:** _`\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3`_
 
-_`\\rei1-fileserver\reilly$\Tempo\LocalSoftware\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3`_
+**REILLY repository:** _`\\rei1-fileserver\reilly$\Tempo\LocalSoftware\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3`_
+
+Note: You can download in the meantime the x64 files:
+- Release x86 filename: **Client64.zip**
+- Signature md5 filename: **Client64.md5**
 
 **2.2** - Verify the source file integrity
 
@@ -166,12 +172,14 @@ In your terminal session, run the script **`CORP-Oracle-Customization_x32-19.3.v
 
 # 2. x64 Client install
 
+[+] Step 1: Get the installer source files
 
 At this point you already have downloaded the source files.
 
 - Release x86 filename: **Client64.zip**
 - Signature md5 filename: **Client64.md5**
 
+[+] Step 2: Source file integrity
 
 **2.1** - Verify the source file integrity
 
@@ -242,7 +250,8 @@ d-----        23/08/2023     13:40                stage
 
 **[+] Step 4**: Run the x64 client installer
 
-Verify if ORACLE_HOME environment variable is declared, in your terminal session enter the following command:
+:exclamation: Verify ORACLE_HOME environment variable declaration, **it should not be referenced**!
+So in your terminal session enter the following command:
 
 :arrow_forward: **`Get-ChildItem env:ORACLE_HOME`**
 
@@ -286,10 +295,47 @@ In your terminal session, run the script **`CORP-Oracle-Customization_x32-19.3.v
 
 
 
+# 3.  Environment variables
+
+Open the **System Properties** window, then click the **Environment Variables** button near the bottom of the tab.
+
+**3.1** - ORACLE
+
+You will need to verify that both of the following variables are <b>non-existent</b> in the **system environment** or in user environment.
+- **`ORACLE_BASE`**
+- **`ORACLE_HOME`**
+
+**3.2** - Path
+
+**`Path`** should contain the absolute paths to the **bin** directory (provide access to Oracle binaries and libraries) of each client.
+
+**`C:\Oracle\Client32\Clientx32-19.3.0\bin`** and **`C:\Oracle\Client64\Clientx64-19.3.0\binn`** have to be included all "system32" entries (as shown in the following screenshot). Note that in the first place it matters to reference the x64 path and only after the x32 path.
+
+![bin dir in path](https://technical-user-git.github.io/hosted-img/ora/ora-path-bindir-declaration.png)
+
+**3.3** - TNS_ADMIN
+
+Create or modify the TNS_ADMIN variable:
+
+**`TNS_ADMIN`** should be set to **`\\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire`**
+
+3.4 - Final check
+
+Run the command in a cmd session:
+
+:arrow_forward: **`get-childitem env:* | findstr /i /r ora.*`**
+
+It displays all Oracle required variables that the system own:
+
+```ps=
+Path        C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Oracle\Client64\Clientx64-19.3.0\bin;C:\Oracle\Client32\Clientx32...
+TNS_ADMIN    \\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire
+```
+
 
 **To be continued....**
 
-Items:
+**TODO Items:**
 - official packages when fix
 - deinstallation
 - common issues
@@ -306,29 +352,7 @@ SEVERE: [FATAL] [INS-32921] Lemplacement du répertoire Oracle Base indiqué nes
 
 
 
-**[+] Step 6**: Environment variables
 
-Open the **System Properties** window, then click the **Environment Variables** button near the bottom of the tab.
-
-You will need to verify that all of the following variables are available in the **system environment** not in user environment, if not just create them.
-
-**6.1** - ORACLE_BASE
-
-**`ORACLE_BASE`** should be set to **`C:\Oracle`**.
-
-**6.2** - ORACLE_HOME
-
-**`ORACLE_HOME`** should be point to **`C:\Oracle\product\ora12.2.0\client_x86`**. 
-
-**6.3** - Path
-
-**`Path`** should contain the absolute path **`C:\Oracle\product\ora12.2.0\client_x86\bin`** (the **bin** directory is where are stored the Oracle dll and binaries).
-
-**`C:\Oracle\product\ora12.2.0\client_x86\bin`** have to be included at the end of the entries (as shown in Sanity check section).
-
-**6.4** - TNS_ADMIN
-
-**`TNS_ADMIN`** should be set to **`\\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire`**
 
 ## Sanity check
 
@@ -356,18 +380,7 @@ C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;
 C:\Oracle\product\ora12.2.0\client_x86\bin      <-- here is the declared bin directory!
 ```
 
-Run the command:
 
-:arrow_forward: **`powershell gci env: | findstr /i /r ora.*`**
-
-It displays all Oracle required variables that the system own:
-
-```ps=
-ORACLE_BASE                    C:\Oracle
-ORACLE_HOME                    C:\Oracle\product\ora12.2.0\client_x86
-Path                           C:\Windows\system32;C:\Windows;C:\Windows\...
-TNS_ADMIN                      \\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire
-```
 
 ### Instance name resolution
 
@@ -378,18 +391,22 @@ Run the command:
 The command output will validate that instance name resolution is working as expected!
 
 ```ps=
-TNS Ping Utility for 32-bit Windows: Version 12.2.0.1.0 - Production on 19-OCT. -2022 11:49:38
+TNS Ping Utility for 64-bit Windows: Version 19.0.0.0.0 - Production on 25-AOUT -2023 14:03:11
 
-Copyright (c) 1997, 2016, Oracle.  All rights reserved.
+Copyright (c) 1997, 2019, Oracle.  All rights reserved.
 
 Fichiers de paramètres utilisés :
 \\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire\sqlnet.ora
 
-
-Adaptateur TNSNAMES utilisé pour la résolution de l'alias
+Adaptateur TNSNAMES utilisÚ pour la rÚsolution de l'alias
 Tentative de contact de (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = REI1-SV00302.vnet.valeo.com)(PORT = 1521))) (CONNECT_DATA = (SID = REI1PVA1) (SERVER = DEDICATED)))
-OK (50 msec)
+OK (70 msec)
 ```
+
+
+
+
+
 
 
 ### Registry Keys
