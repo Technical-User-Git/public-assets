@@ -290,6 +290,7 @@ In your terminal session, run the script **`CORP-Oracle-Customization_x32-19.3.v
 **To be continued....**
 
 Items:
+- official packages when fix
 - deinstallation
 - common issues
 - simple checks (Variables, Registry Hives, ...)
