@@ -309,7 +309,7 @@ You will need to verify that both of the following variables are <b>non-existent
 
 **`Path`** should contain the absolute paths to the **bin** directory (provide access to Oracle binaries and libraries) of each client.
 
-**`C:\Oracle\Client32\Clientx32-19.3.0\bin`** and **`C:\Oracle\Client64\Clientx64-19.3.0\binn`** have to be included all "system32" entries (as shown in the following screenshot). Note that in the first place it matters to reference the x64 path and only after the x32 path.
+**`C:\Oracle\Client32\Clientx32-19.3.0\bin`** and **`C:\Oracle\Client64\Clientx64-19.3.0\bin`** have to be included all "system32" entries (as shown in the following screenshot). Note that in the first place it matters to reference the x64 path and only after the x32 path.
 
 ![bin dir in path](https://technical-user-git.github.io/hosted-img/ora/ora-path-bindir-declaration.png)
 
