@@ -34,7 +34,7 @@ Three possibilities:
 In your running terminal enter the commands:
 
 ```ps=
-$MyInfraServer='REI1-SV00301'mkdir 
+$MyInfraServer='REI1-SV00301'
 $MyInfraServer='ISS1-SV00091'
 
 $MyGuids='{b3958201-c674-4e2f-bfdd-2fd55c091207}','{d104d5ba-67dc-4bf9-9615-fa201beee4f0}'
@@ -52,6 +52,8 @@ foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cac
 Or alternatively you could download the files from the fileserver:
 
 _`\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3\x86`_
+
+_`\\rei1-fileserver\reilly$\Tempo\LocalSoftware\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3`_
 
 **2.2** - Verify the source file integrity
 
