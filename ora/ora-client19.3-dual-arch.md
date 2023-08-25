@@ -356,32 +356,6 @@ SEVERE: [FATAL] [INS-32921] Lemplacement du répertoire Oracle Base indiqué nes
 
 ## Sanity check
 
-### System environment variables
-
-Open a new cmd terminal and run the command:
-
-:arrow_forward: **`powershell $Env:Path -split ';'`**
-
-It ouputs the Path variable which should contains the oracle bin path:
-
-```ps=
-C:\Windows\system32;
-C:\Windows;
-C:\Windows\System32\Wbem;
-C:\Windows\System32\WindowsPowerShell\v1.0\;
-C:\Windows\System32\OpenSSH\;
-C:\Program Files\Gemalto\Access Client\v5\;
-C:\Program Files (x86)\Gemalto\Access Client\v5\;
-C:\Program Files\SafeNet\Authentication\SAC\x64;
-C:\Program Files\SafeNet\Authentication\SAC\x32;
-C:\Program Files (x86)\Sennheiser\SenncomSDK\;
-C:\Program Files\Amazon Corretto\jdk11.0.14_10\bin;
-C:\Users\a-yvidil\AppData\Local\Microsoft\WindowsApps;
-C:\Oracle\product\ora12.2.0\client_x86\bin      <-- here is the declared bin directory!
-```
-
-
-
 ### Instance name resolution
 
 Run the command:
