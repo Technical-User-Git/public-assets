@@ -319,7 +319,7 @@ Create or modify the TNS_ADMIN variable:
 
 **`TNS_ADMIN`** should be set to **`\\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire`**
 
-3.4 - Final check
+**3.4** - Final check
 
 Run the command in a cmd session:
 
@@ -387,9 +387,8 @@ OK (70 msec)
 
 Check the Registry Editor (hit `Windows+r` then type `regedit`):
 
-- Check that Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient12Home1_32bit\ORACLE_HOME` points to `C:\Oracle\product\ora12.2.0\client_x86`
-
-![OLEDB](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/clientx86_OLEDB.png)
+- Check that Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient19Home1_32bit\ORACLE_HOME` points to `C:\Oracle\Client32\Clientx32-19.3.0`
+- Check that Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient19Home1\ORACLE_HOME` points to `C:\Oracle\Client64\Clientx64-19.3.0`
 
 - **`HKLM\SOFTWARE\WOW6432Node\ODBC\ODBCINST.INI\Oracle dans OraClient12Home1_32bit`** has a path reference to the main driver file `C:\Oracle\product\ora12.2.0\client_x86\BIN\SQORA32.DLL`:
 
