@@ -138,7 +138,7 @@ In your terminal session, run the setup executable:
 
 The setup is launched, it will run silently so you won't see any progression. Just be patient it will take 2 or 3 minutes...
 
-You can monitor the execution by having a look at the **task manager**: under the main process of your powershell terminal you will find some child processes for the **setup.exe** you just ran and the **oui.exe** (oracle universal installer). Once both child processes will disappear youy can consider that this step of the setup is complete.
+You can monitor the execution by having a look at the **task manager**: under the main process of your powershell terminal you will find some child processes for the **setup.exe** you just ran and the **oui.exe** (oracle universal installer). Once both child processes will disappear you can consider that this step of the setup is complete.
 
 ![task_mgr](https://technical-user-git.github.io/hosted-img/ora/oui_task_manager.png)
 
