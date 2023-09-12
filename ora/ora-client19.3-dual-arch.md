@@ -76,7 +76,7 @@ Last command will output:
 
 ```shell=
 Hachage MD5 de Client32.zip:
-0f1cd65a48ca3c61e0287529e3b3ba3c     <-- here is the signature (computed md5 hash)
+c90f7e72168f3e84cf03c1fabf4fab56     <-- here is the signature (computed md5 hash)
 CertUtil: -hashfile La commande s’est terminée correctement.
 ```
 
@@ -89,12 +89,12 @@ In the same terminal run the command:
 The command ouputs the signature hash:
 
 ```shell=
-0f1cd65a48ca3c61e0287529e3b3ba3c
+c90f7e72168f3e84cf03c1fabf4fab56
 ```
 
 You will now verify that the first computed hash matches the signature file one.
 
-`0f1cd65a48ca3c61e0287529e3b3ba3c = 0f1cd65a48ca3c61e0287529e3b3ba3c`, the **hashes are equal**, file integrety is verified.
+`c90f7e72168f3e84cf03c1fabf4fab56 = c90f7e72168f3e84cf03c1fabf4fab56`, the **hashes are equal**, file integrety is verified.
 
 
 :point_right: **Summary:**
@@ -195,7 +195,7 @@ Last command will output:
 
 ```shell=
 Hachage MD5 de Client64.zip:
-bc9e365a5529cd8f64bf0c27e57ee606     <-- computed md5 hash
+577cc56d6f9af07734f7483f72bf6ac0     <-- computed md5 hash
 CertUtil: -hashfile La commande s’est terminée correctement.
 ```
 
@@ -208,12 +208,12 @@ In the same terminal run the command:
 The command ouputs the signature hash:
 
 ```shell=
-bc9e365a5529cd8f64bf0c27e57ee606
+577cc56d6f9af07734f7483f72bf6ac0
 ```
 
 Now verify that the computed hash matches the signature file one.
 
-`bc9e365a5529cd8f64bf0c27e57ee606 = bc9e365a5529cd8f64bf0c27e57ee606`, the **hashes are equal**, file integrety is verified.
+`577cc56d6f9af07734f7483f72bf6ac0 = 577cc56d6f9af07734f7483f72bf6ac0`, the **hashes are equal**, file integrety is verified.
 
 **[+] Step 3**: Unzip the source file
 
