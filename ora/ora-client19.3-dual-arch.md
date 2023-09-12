@@ -44,7 +44,7 @@ foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cac
 
 **OR**
 
-**2.1** - Download the source from the fileserever
+**2.1** - Download the source from the fileserver
 
 You will need to download the following files:
 
