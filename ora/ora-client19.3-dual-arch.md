@@ -221,28 +221,6 @@ Path        C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\S
 TNS_ADMIN    \\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire
 ```
 
----
-
-**To be continued....**
-
-**TODO Items:**
-- official packages when fix
-- deinstallation
-- common issues
-- simple checks (Variables, Registry Hives, ...)
-
-
-## Commons Issues
-
-```
-SEVERE: [FATAL] [INS-32921] Lemplacement du répertoire Oracle Base indiqué nest pas valide, car il contient des répertoires Oracle Base associés à dautres répertoires de base Oracle installés sur ce serveur.
-   CAUSE: L'emplacement du répertoire Oracle Base indiqué contient les répertoires Oracle Base actifs suivants : C:\Oracle\Client32.
-   ACTION: Indiquez un emplacement pour le répertoire Oracle Base qui nest pas un répertoire parent dun répertoire Oracle Base existant.
-```
-
-
-
-
 
 ## Sanity check
 
@@ -266,11 +244,6 @@ Adaptateur TNSNAMES utilisÚ pour la rÚsolution de l'alias
 Tentative de contact de (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = REI1-SV00302.vnet.valeo.com)(PORT = 1521))) (CONNECT_DATA = (SID = REI1PVA1) (SERVER = DEDICATED)))
 OK (70 msec)
 ```
-
-
-
-
-
 
 
 ### Registry Keys
@@ -313,11 +286,7 @@ In a cmd terminal run the commands:
 
 :arrow_forward: **`cd C:\Temp`**
  
-:arrow_forward: **`rmdir /S /Q .\client32`** to delete main directory and subfolders
- 
-:arrow_forward: **`cd C:\mes_sources`**
- 
-:arrow_forward: **`rmdir /S /Q .\OracleClient12`** to delete the source directory
+:arrow_forward: **`rmdir /S /Q .\Oracle`** to delete temp Oracle directory with its subfolders
  
  
 ---
