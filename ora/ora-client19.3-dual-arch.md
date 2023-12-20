@@ -17,9 +17,11 @@ tags: oracle, client19
 
 **[+] Step 1**: Create the **Oracle base** folder
 
-In an powershell terminal run the command: 
+Open a powershell terminal and run the command: 
 
 :arrow_forward: **`mkdir C:\Oracle`**
+
+:arrow_forward: **`mkdir C:\Temp\Oracle`**
 
 **[+] Step 2**: Get the installer source files
 
@@ -34,82 +36,14 @@ Three possibilities:
 In your running terminal enter the commands:
 
 ```ps=
-$MyInfraServer='REI1-SV00301'
-$MyInfraServer='ISS1-SV00091'
+If (([System.Net.Dns]::GetHostName()).split('-')[0] -eq 'ISS1') { $MyInfraServer='ISS1-SV00091' } Elseif (([System.Net.Dns]::GetHostName()).split('-')[0] -eq 'REI1') { $MyInfraServer='REI1-SV00301' }
 
 $MyGuids='{b3958201-c674-4e2f-bfdd-2fd55c091207}','{d104d5ba-67dc-4bf9-9615-fa201beee4f0}'
 
-foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cache\* -Destination c:\temp\ -Recurse }
+foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cache\* -Destination c:\temp\Oracle -Recurse }
 ```
 
-**OR**
-
-**2.1** - Download the source from the fileserver
-
-You will need to download the following files:
-
-- Release x86 filename: **Client32.zip**
-- Signature md5 filename: **Client32.md5**
-
-Download uri:
-
-**ISSOIRE repository:** _`\\iss1-sv00033\Local-Software\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3`_
-
-**REILLY repository:** _`\\rei1-fileserver\reilly$\Tempo\LocalSoftware\Métiers\Informatique\Oracle\ora_deployment_x86_x64\OracleFullClient19.3`_
-
-Note: You can download in the meantime the x64 files:
-- Release x86 filename: **Client64.zip**
-- Signature md5 filename: **Client64.md5**
-
-**2.2** - Verify the source file integrity
-
-Compute the hash value for the file **Client32.zip** (checksum process).
-This "Best Pratice" helps verify that the file has not changed since it was digitally signed (not corrupted or altered in anyway).
-
-In your running terminal enter the commands:
-
-:arrow_forward: **`cd C:\temp`** to place yourself in the source file directory where you downloaded the Client zip files (change `temp` accordingly to the location of the source files).
-
-:arrow_forward: **`certutil -hashfile Client32.zip MD5`** to run the checksum against the source file
-
-Last command will output:
-
-```shell=
-Hachage MD5 de Client32.zip:
-c90f7e72168f3e84cf03c1fabf4fab56     <-- here is the signature (computed md5 hash)
-CertUtil: -hashfile La commande s’est terminée correctement.
-```
-
-You will now display the content of the original signature file.
-
-In the same terminal run the command:
-
-:arrow_forward: **`Get-Content Client32.md5`** 
-
-The command ouputs the signature hash:
-
-```shell=
-c90f7e72168f3e84cf03c1fabf4fab56
-```
-
-You will now verify that the first computed hash matches the signature file one.
-
-`c90f7e72168f3e84cf03c1fabf4fab56 = c90f7e72168f3e84cf03c1fabf4fab56`, the **hashes are equal**, file integrety is verified.
-
-
-:point_right: **Summary:**
-
-![chksum](https://technical-user-git.github.io/hosted-img/ora/checksum_digest_x86_files.png)
-
-
-
-**[+] Step 3**: Unzip the source file
-
-Always in your opened terminal session, run the commands:
-
-:arrow_forward: **`Expand-Archive -Path c:\temp\Client32.zip -DestinationPath c:\temp\Oracle\`** 
-
-It will unarchive the file to **Client32** folder inside the **C:\Temp\Oracle** directory, then place yourself in **`C:\Temp\Oracle`**.
+Place yourself in **`C:\Temp\Oracle`**.
 
 :arrow_forward: **`cd C:\Temp\Oracle`** to enter the unzip source folder
 
@@ -136,7 +70,7 @@ d-----        23/08/2023     13:38                stage
 -a----        06/06/2019     22:03            514 welcome.html
 ```
 
-**[+] Step 4**: Run the client installer
+**[+] Step 2**: Run the client installer
 
 In your terminal session, run the setup executable:
 
@@ -167,61 +101,18 @@ In your terminal session, run the script **`CORP-Oracle-Customization_x32-19.3.v
 
 ![setup](https://technical-user-git.github.io/hosted-img/ora/ora_home_name_x86_vbs_script.png)
 
-
+Once client32 install is done, you can close the powershell terminal.
 
 
 # 2. x64 Client install
 
 [+] Step 1: Get the installer source files
 
+Open a **new** powershell terminal. 
+
 At this point you already have downloaded the source files.
 
-- Release x86 filename: **Client64.zip**
-- Signature md5 filename: **Client64.md5**
-
-[+] Step 2: Source file integrity
-
-**2.1** - Verify the source file integrity
-
-Compute the hash value for the file **Client64.zip** (checksum process).
-
-In your running terminal enter the commands:
-
-:arrow_forward: **`cd C:\temp`** to place yourself in the source file directory where you downloaded the Client zip files (change `temp` accordingly to the location of the source files).
-
-:arrow_forward: **`certutil -hashfile Client64.zip MD5`** to run the checksum against the source file
-
-Last command will output:
-
-```shell=
-Hachage MD5 de Client64.zip:
-577cc56d6f9af07734f7483f72bf6ac0     <-- computed md5 hash
-CertUtil: -hashfile La commande s’est terminée correctement.
-```
-
-You will now display the content of the original signature file.
-
-In the same terminal run the command:
-
-:arrow_forward: **`Get-Content Client64.md5`** 
-
-The command ouputs the signature hash:
-
-```shell=
-577cc56d6f9af07734f7483f72bf6ac0
-```
-
-Now verify that the computed hash matches the signature file one.
-
-`577cc56d6f9af07734f7483f72bf6ac0 = 577cc56d6f9af07734f7483f72bf6ac0`, the **hashes are equal**, file integrety is verified.
-
-**[+] Step 3**: Unzip the source file
-
-Always in your opened terminal session, run the commands:
-
-:arrow_forward: **`Expand-Archive -Path c:\temp\Client64.zip -DestinationPath c:\temp\Oracle\`** 
-
-It will unarchive the file to **Client64** folder inside the **C:\Temp** directory, then place yourself in **`C:\Temp\Oracle`**.
+Ensure you are in **`C:\Temp\Oracle`**.
 
 :arrow_forward: **`cd C:\Temp\Oracle`** to enter the unzip source folder
 
@@ -248,7 +139,7 @@ d-----        23/08/2023     13:40                stage
 -a----        06/02/2013     13:25            514 welcome.html
 ```
 
-**[+] Step 4**: Run the x64 client installer
+**[+] Step 2**: Run the x64 client installer
 
 :exclamation: Verify ORACLE_HOME environment variable declaration, **it should not be referenced**!
 So in your terminal session enter the following command:
