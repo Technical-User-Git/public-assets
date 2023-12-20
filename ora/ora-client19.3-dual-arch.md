@@ -40,12 +40,12 @@ If (([System.Net.Dns]::GetHostName()).split('-')[0] -eq 'ISS1') { $MyInfraServer
 
 $MyGuids='{b3958201-c674-4e2f-bfdd-2fd55c091207}','{d104d5ba-67dc-4bf9-9615-fa201beee4f0}'
 
-foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cache\* -Destination c:\temp\Oracle -Recurse }
+foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cache\* -Destination c:\Temp\Oracle -Recurse }
 ```
 
 Place yourself in **`C:\Temp\Oracle`**.
 
-:arrow_forward: **`cd C:\Temp\Oracle`** to enter the unzip source folder
+:arrow_forward: **`cd C:\Temp\Oracle`** to enter the source folder
 
 :arrow_forward: **`Get-ChildItem .\Client32`** to list the content of Client32 folder
 
@@ -88,7 +88,7 @@ To check for the completion, you can have have a look to Oracle base directory *
 
 ![setup](https://technical-user-git.github.io/hosted-img/ora/ora_home_name_x86.png)
 
-**[+] Step 5**: Run the Visual Basic script
+**[+] Step 3**: Run the Visual Basic script
 
 It will fix the permission properties on ORACLE_BASE and generate all environment variables.
 
@@ -154,9 +154,13 @@ Name                           Value
 ORACLE_HOME                    C:\Oracle\Client32\clientx32-19.3.0
 ```
 
-You will need to unset the variable. Type in your terminal session:
+You will need to **unset the variable** for three scopes. Type in your terminal session:
 
 :arrow_forward: **`[Environment]::SetEnvironmentVariable("ORACLE_HOME", $null ,"Machine")`**
+
+:arrow_forward: **`[Environment]::SetEnvironmentVariable("ORACLE_HOME", $null ,"User")`**
+
+:arrow_forward: **`[Environment]::SetEnvironmentVariable("ORACLE_HOME", $null ,"Process")`**
 
 Important: As all variables are already loaded in your current session, you will need to close it and reopen a new powershell terminal as administrator.
 
@@ -176,7 +180,7 @@ To check for the completion, you can have have a look to Oracle base directory *
 
 ![setup](https://technical-user-git.github.io/hosted-img/ora/ora_home_name_x86.png)
 
-**[+] Step 5**: Run the Visual Basic script
+**[+] Step 3**: Run the Visual Basic script
 
 It will fix the permission properties on ORACLE_BASE and generate all environment variables.
 
@@ -200,7 +204,7 @@ You will need to verify that both of the following variables are <b>non-existent
 
 **`Path`** should contain the absolute paths to the **bin** directory (provide access to Oracle binaries and libraries) of each client.
 
-**`C:\Oracle\Client32\Clientx32-19.3.0\bin`** and **`C:\Oracle\Client64\Clientx64-19.3.0\bin`** have to be included under all "system32" entries (as shown in the following screenshot). Note that in the first place it matters to reference the x64 path and only after the x32 path.
+**`C:\Oracle\Client64\Clientx64-19.3.0\bin`** and **`C:\Oracle\Client32\Clientx32-19.3.0\bin`** have to be included under all "system32" entries (as shown in the following screenshot). Note that in the **first place** it matters to reference the x64 path and only after the x32 path.
 
 ![bin dir in path](https://technical-user-git.github.io/hosted-img/ora/ora-path-bindir-declaration.png)
 
@@ -223,6 +227,7 @@ Path        C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\S
 TNS_ADMIN    \\iss1-sv00052\MES_ISS\Oracle\Tns_Admin_Issoire
 ```
 
+---
 
 **To be continued....**
 
