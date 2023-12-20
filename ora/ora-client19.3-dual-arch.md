@@ -25,12 +25,6 @@ Open a powershell terminal and run the command:
 
 **[+] Step 2**: Get the installer source files
 
-Three possibilities:
-
-- obtain the source from the infraserver
-- get the source from the fileserver
-- already got the source files
-
 **2.1** - Download the source from the infraserver
 
 In your running terminal enter the commands:
