@@ -34,7 +34,7 @@ If (([System.Net.Dns]::GetHostName()).split('-')[0] -eq 'ISS1') { $MyInfraServer
 
 $MyGuids='{b3958201-c674-4e2f-bfdd-2fd55c091207}','{d104d5ba-67dc-4bf9-9615-fa201beee4f0}'
 
-foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\\pkgsvrhoste$\$c\cache\* -Destination c:\Temp\Oracle -Recurse }
+foreach ($c in $MyGuids) { Copy-Item -Path \\$MyInfraServer\pkgsvrhoste$\$c\cache\* -Destination c:\Temp\Oracle -Recurse }
 ```
 
 Place yourself in **`C:\Temp\Oracle`**.
@@ -108,7 +108,7 @@ At this point you already have downloaded the source files.
 
 Ensure you are in **`C:\Temp\Oracle`**.
 
-:arrow_forward: **`cd C:\Temp\Oracle`** to enter the unzip source folder
+:arrow_forward: **`cd C:\Temp\Oracle`** to enter the source folder
 
 :arrow_forward: **`Get-ChildItem .\Client64`** to list the content of Client64 folder
 
