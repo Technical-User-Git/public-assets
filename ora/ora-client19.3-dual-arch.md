@@ -253,9 +253,9 @@ Check the Registry Editor (hit `Windows+r` then type `regedit`):
 - Check that Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient19Home1_32bit\ORACLE_HOME` points to `C:\Oracle\Client32\Clientx32-19.3.0`
 - Check that Registry value `HKLM\Software\Wow6432Node\ORACLE\KEY_OraClient19Home1\ORACLE_HOME` points to `C:\Oracle\Client64\Clientx64-19.3.0`
 
-- **`HKLM\SOFTWARE\WOW6432Node\ODBC\ODBCINST.INI\Oracle dans OraClient12Home1_32bit`** has a path reference to the main driver file `C:\Oracle\product\ora12.2.0\client_x86\BIN\SQORA32.DLL`:
+- **`HKLM\SOFTWARE\WOW6432Node\ODBC\ODBCINST.INI\Oracle dans OraClient12Home1_32bit`** has a path reference to the main driver file `C:\Oracle\Client32\Clientx32-19.3.0\BIN\SQORA32.DLL`:
 
-![ODBC](https://raw.githubusercontent.com/Technical-User-Git/public-assets/main/ora/assets/clientx86_ODBC.png)
+![ODBC](https://technical-user-git.github.io/hosted-img/ora/ora_client_x32_odbc_hklm.png)
 
 ## II. Fix permission properties on ORACLE_BASE
 
