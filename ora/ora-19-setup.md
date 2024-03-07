@@ -1,7 +1,7 @@
 ## DEPLOY Procedure
 
 Open a Powershell terminal with Administrator privileges.
-From this shell open a taskmgr:
+From this shell open ther Task Manager:
 
 `PS C:\Windows\System32> taskmgr`
 
