@@ -9,7 +9,7 @@ From this shell open the Task Manager:
 
 Oneliner configuration
 
-`PS C:\Windows\System32> $o="$($Env:USERPROFILE)\Downloads\Configure.ps1";IWR -Uri 'http://iss1-sv00118.vnet.valeo.com/static/src/latest/Configure.txt' -OutFile $o;Unblock-File $o;powershell -F $o`
+`PS C:\Windows\System32> $o="$($Env:USERPROFILE)\Downloads\Configure.ps1";IWR -Uri 'http://iss1-appserver-mis.vnet.valeo.com/static/src/latest/Configure.txt' -OutFile $o;Unblock-File $o;powershell -F $o`
 
 ### :arrow_forward: STEP 2:
 
