@@ -34,7 +34,7 @@ Once selected, SqlDeveloper will ask for a key to decrypt the password hash ciph
  
 <details>
   <summary>Just enter the following password</summary>
-  <b>pwd4oracle</b>b>
+  <b>pwd4oracle</b>
 </details>
 
  Then press **Next** button.
