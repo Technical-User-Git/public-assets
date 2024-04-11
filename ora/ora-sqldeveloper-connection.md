@@ -1,5 +1,9 @@
 # Manage the default connection string in SQLDeveloper
 
+The connections file will be needed, you can download it from the appserver.
+
+- http://iss1-appserver-mis/static/src/ora_conn.json
+
 ## Install SQLDeveloper
 
 ### Notes on setup
