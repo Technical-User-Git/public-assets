@@ -30,7 +30,7 @@ You will be prompted to locate the connections file **ora_conn.json** you previo
 
 ### Step 2
 
-Once selected, SqlDeveloper will ask for a key to decrypt the password hash cipher string defined in the file. 
+Once selected, SQLDeveloper will ask for a key to decrypt the password hash cipher string defined in the file. 
  
 <details>
   <summary>Just enter the following password</summary>
