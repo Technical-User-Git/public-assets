@@ -1,6 +1,6 @@
 # Manage the default connection string in SQLDeveloper
 
-## Install sqldeveloper
+## Install SQLDeveloper
 
 ### Notes on setup
 
