@@ -30,7 +30,15 @@ You will be prompted to locate the connections file **ora_conn.json** you previo
 
 ### Step 2
 
-Once selected, SqlDeveloper will ask for a key to decrypt the password hash cipher string defined in the file. Just enter <!-- pwd4oracle --> and press **Next** button.
+Once selected, SqlDeveloper will ask for a key to decrypt the password hash cipher string defined in the file. 
+Just enter 
+<details open>
+
+  <summary>show me the password</summary>
+  **pwd4oracle**
+</details>
+
+ Thenb press **Next** button.
 
 ![conn 3](https://technical-user-git.github.io/hosted-img/ora/ora_add_conn_3.png)
 
